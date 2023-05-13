@@ -11,13 +11,6 @@ class ContactsView extends StatefulWidget {
 }
 
 class _ContactsViewState extends State<ContactsView> {
-  int selectedindex = 1;
-  void onItemTapped(int index) {
-    setState(() {
-      selectedindex = index;
-    });
-  }
-
   TextEditingController name = TextEditingController();
   TextEditingController number = TextEditingController();
   addNewContact(context) {
@@ -162,55 +155,11 @@ class _ContactsViewState extends State<ContactsView> {
                         },
                         child: const Text("OK"),
                       ),
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => RecentsView()));
-                            },
-                            icon: const Icon(Icons.contact_page_outlined),
-                          ),
-                          SizedBox(width: 100),
-                          IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ContactsView()));
-                            },
-                            icon: const Icon(Icons.call),
-                          ),
-                          SizedBox(width: 100),
-                          IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => GroupView()));
-                            },
-                            icon: const Icon(Icons.group_outlined),
-                          )
-                        ],
-                      )
                     ],
                   );
               });
           },
           child: const Icon(Icons.add)),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.call), label: "recents"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contact_page_outlined), label: "Contacts"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.group_outlined), label: "Groups")
-        ],
-        currentIndex: selectedindex,
-        onTap: onItemTapped,
-      ),
     );
   }
 }

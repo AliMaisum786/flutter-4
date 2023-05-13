@@ -11,27 +11,69 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int currentindex = 0;
-  final screens = [
-    const RecentsView(),
-    const ContactsView(),
-    const GroupView()
-  ];
+  int activeTab= 2
+  ;
+  Widget currentScreen = const GroupView(); 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: screens[currentindex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentindex,
-        onTap: (index) => setState(() => currentindex = index),
-        items:const [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.call_rounded), label: "Recents"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.contact_page_outlined), label: "Contacts"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.group_outlined), label: "Groups"),]
+      body: currentScreen,
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              MaterialButton(
+                minWidth: 60,
+                onPressed: (){
+                  setState(() {
+                    activeTab=0;
+                    currentScreen =const RecentsView();
+                  },);
+                },
+                child: 
+                Column(
+                  children: [
+                Icon(Icons.call_rounded,
+                color: activeTab == 0 ? Colors.blue : Colors.black),
+                const Text("Recents")
+            ]),
+                ),
+                MaterialButton(
+                minWidth: 60,
+                onPressed: (){
+                  setState(() {
+                    activeTab=1;
+                    currentScreen = const ContactsView();
+                  });
+                },
+                child: Column(
+                  children: [
+                    Icon(Icons.contact_page_outlined,
+                    color: activeTab == 1 ? Colors.blue : Colors.black),
+                    const Text("Contacts")
+                  ],
+                ),),
+                MaterialButton(
+                minWidth: 60,
+                onPressed: (){
+                  setState(() {
+                    activeTab=2;
+                    currentScreen =const GroupView();
+                  });
+                },
+                child: Column(
+                  children: [
+                    Icon(Icons.group_outlined,                
+                    color: activeTab == 2 ? Colors.blue : Colors.black),
+                    const Text("Groups")
+                  ],
+                ),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

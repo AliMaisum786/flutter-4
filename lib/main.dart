@@ -1,5 +1,4 @@
-import 'package:assignment4/views/Contacts_View.dart';
-import 'package:assignment4/views/Groups_View.dart';
+import 'package:assignment4/widgets/random_widgets.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: GroupView(),
+      home: BottomNavBar(),
       debugShowCheckedModeBanner: false,
     );
   }

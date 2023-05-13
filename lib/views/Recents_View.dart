@@ -1,4 +1,3 @@
-import 'package:assignment4/utils/Contacts_Constant.dart';
 import 'package:flutter/material.dart';
 
 class RecentsView extends StatefulWidget {
@@ -9,14 +8,7 @@ class RecentsView extends StatefulWidget {
 }
 
 class _RecentsViewState extends State<RecentsView> {
-  int selectedindex = 2;
-  void onItemTapped(int index) {
-    setState(() {
-      selectedindex = index;
-    });
-  }
-
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -275,17 +267,6 @@ class _RecentsViewState extends State<RecentsView> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add_call),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.call), label: "recents"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contact_page_outlined), label: "Contacts"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.group_outlined), label: "Groups")
-        ],
-        currentIndex: selectedindex,
-        onTap: onItemTapped,
       ),
     );
   }
